@@ -1,12 +1,48 @@
 version: '2.0'
 services:
-  app:
-    image: 'python:3'
-    build: .
+  db:
+    build:
+      context: .
+      dockerfile: DBDockerfile
+    stdin_open: true
     ports:
-      - "8080:8080"
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+#      - PGHOST=localhost
+      - POSTGRES_PASSWORD=null
+      - POSTGRES_DB=shopping
+#      - PGPORT=5432
+#    command: su - postgres -c 'pg_ctl -D /var/lib/postgresql/data -l logfile start'
+  api:
+    restart: always
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
     volumes:
-      - .:/code
+      - ./api:/code
     environment:
       - FLASK_APP=api
       - FLASK_ENV=development
+      - PGUSER=postgres
+      - PGHOST=db
+      - PGPASSWORD=null
+      - PGDATABASE=shopping
+      - PGPORT=5432
+      - DATABASE_URL=postgres://postgres:null@db:5432/shopping
+    depends_on:
+      - db
+  client:
+    restart: always
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/code
+    stdin_open: true
+    depends_on:
+      - api

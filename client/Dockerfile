@@ -1,12 +1,11 @@
-FROM python:3
+FROM node:13
 
-COPY . /code
-RUN apt-get install -y libpq-dev g++ make
-RUN bash /code/node-install-script.sh; apt-get install -y nodejs
+COPY . /code/
 WORKDIR /code
-COPY requirements.txt /code/
-RUN pip3 install -r requirements.txt
-# Make default database
+#RUN apt-get install -y libpq-dev g++ make
+#RUN bash /code/node-install-script.sh; apt-get install -y nodejs
+RUN ls -al
 
-ENTRYPOINT ["bash"]
-CMD ["/code/start-api-client.sh"]
+RUN npm install
+CMD ["npm", "init"]
+CMD ["npm", "start"]
