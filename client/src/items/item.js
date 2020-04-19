@@ -10,7 +10,8 @@ export class Item extends React.Component {
     render() {
         return (
             <div className="item" id={this.item.id}>
-                {this.item.name}
+                <div className="item-title">{this.item.name}</div>
+                <img className="item-picture" src={this.item.src} />
             </div>
         )
     }

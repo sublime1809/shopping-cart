@@ -9,29 +9,23 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_USER=postgres
-#      - PGHOST=localhost
       - POSTGRES_PASSWORD=null
       - POSTGRES_DB=shopping
-#      - PGPORT=5432
-#    command: su - postgres -c 'pg_ctl -D /var/lib/postgresql/data -l logfile start'
   api:
     restart: always
     build:
-      context: ./api
+      context: ./djangoapi
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - "8000:8000"
     volumes:
-      - ./api:/code
+      - ./djangoapi:/code
     environment:
-      - FLASK_APP=api
-      - FLASK_ENV=development
       - PGUSER=postgres
       - PGHOST=db
       - PGPASSWORD=null
       - PGDATABASE=shopping
       - PGPORT=5432
-      - DATABASE_URL=postgres://postgres:null@db:5432/shopping
     depends_on:
       - db
   client:
@@ -43,6 +37,7 @@ services:
       - "3000:3000"
     volumes:
       - ./client:/code
+    # Keep the app running
     stdin_open: true
     depends_on:
       - api

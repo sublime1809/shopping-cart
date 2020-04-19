@@ -1,0 +1,70 @@
+[
+  {
+    "model": "djangoapi.Cart",
+    "pk": 1,
+    "fields": {}
+  },
+  {
+    "model": "djangoapi.Item",
+    "pk": 1,
+    "fields": {
+      "cost": 1.00,
+      "name": "Bobblehead - Strength",
+      "src": "https://vignette.wikia.nocookie.net/fallout/images/1/11/Bobblehead_Strength.png/revision/latest/scale-to-width-down/242?cb=20160102010041"
+    }
+  },
+  {
+    "model": "djangoapi.Item",
+    "pk": 2,
+    "fields": {
+      "cost": 5.99,
+      "name": "Bobblehead - Perception",
+      "src": "https://vignette.wikia.nocookie.net/fallout/images/4/45/Bobblehead_Perception.png/revision/latest/scale-to-width-down/125?cb=20110307013127"
+    }
+  },
+  {
+    "model": "djangoapi.Item",
+    "pk": 3,
+    "fields": {
+      "cost": 100.00,
+      "name": "Bobblehead - Endurance",
+      "src": "https://vignette.wikia.nocookie.net/fallout/images/1/13/Bobblehead_Endurance.png/revision/latest/scale-to-width-down/125?cb=20110307012228"
+    }
+  },
+  {
+    "model": "djangoapi.Item",
+    "pk": 4,
+    "fields": {
+      "cost": 0.50,
+      "name": "Bobblehead - Charisma",
+      "src": "https://vignette.wikia.nocookie.net/fallout/images/7/7f/Bobblehead_Charisma.png/revision/latest/scale-to-width-down/118?cb=20110307011846"
+    }
+  },
+  {
+    "model": "djangoapi.Item",
+    "pk": 5,
+    "fields": {
+      "cost": 1.00,
+      "name": "Bobblehead - Intelligence",
+      "src": "https://vignette.wikia.nocookie.net/fallout/images/2/24/Bobblehead_Intelligence.png/revision/latest/scale-to-width-down/105?cb=20110307012402"
+    }
+  },
+  {
+    "model": "djangoapi.Item",
+    "pk": 6,
+    "fields": {
+      "cost": 100.00,
+      "name": "Bobblehead - Agility",
+      "src": "https://vignette.wikia.nocookie.net/fallout/images/d/dd/Bobblehead_Agility.png/revision/latest/scale-to-width-down/150?cb=20110307011605"
+    }
+  },
+  {
+    "model": "djangoapi.Item",
+    "pk": 7,
+    "fields": {
+      "cost": 1000000.00,
+      "name": "Bobblehead - Luck",
+      "src": "https://vignette.wikia.nocookie.net/fallout/images/a/ae/Bobblehead_Luck.png/revision/latest/scale-to-width-down/125?cb=20110307012800"
+    }
+  }
+]
