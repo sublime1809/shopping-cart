@@ -22,7 +22,8 @@ from djangoapi import views
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('cart/', views.CartView.as_view()),
-    path('cart/<int:cart_pk>', views.CartView.as_view()),
+    path('cart/<int:cart_pk>/', views.CartView.as_view()),
+    path('cart/<int:pk>/item/<int:item_pk>', views.CartItemView.as_view(), name='filling_pk'),
     path('item/', views.ItemView.as_view()),
-    path('item/<int:cart_pk>', views.ItemView.as_view()),
+    path('item/<int:item_pk>/', views.ItemView.as_view()),
 ]

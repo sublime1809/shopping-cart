@@ -37,10 +37,10 @@ class CartView(views.generic.ListView, views.generic.CreateView, views.generic.U
         fillings = models.CartFilling.objects.filter(cart__pk=cart_pk)
         return JsonResponse({
             'id': cart_pk,
-            'items': [
-                {'quantity': filling.quantity,
-                 'item': filling.item.jsonify()}
-                for filling in fillings]
+            'items': {
+                filling.item.pk:
+                    {'quantity': filling.quantity, 'item': filling.item.jsonify()}
+                for filling in fillings}
         })
 
     def put(self, request, *args, **kwargs):
@@ -64,3 +64,26 @@ class ItemView(views.generic.ListView):
             'src': item.src
         } for item in items]
         return JsonResponse({'items': response})
+
+
+class CartItemView(views.generic.UpdateView):
+    def get_queryset(self):
+        return None
+
+    def post(self, request, pk, item_pk, *args, **kwargs):
+        data = json.loads(request.body)
+        quantity = data.get('quantity')
+        filling, created = models.CartFilling.objects.get_or_create(cart_id=pk, item_id=item_pk)
+        if quantity:
+            filling.quantity = quantity
+            filling.save()
+        else:
+            filling.delete()
+        fillings = models.CartFilling.objects.filter(cart__pk=pk)
+        return JsonResponse({
+            'id': pk,
+            'items': {
+                filling.item.pk:
+                    {'quantity': filling.quantity, 'item': filling.item.jsonify()}
+                for filling in fillings}
+        })
