@@ -3,6 +3,10 @@
     height: 200px;
     display: inline-block;
     position: relative;
+    border: 2px #0F0 solid;
+    border-radius: 10px;
+    margin: 7px;
+    padding: 7px;
 }
 
 .item .item-title {

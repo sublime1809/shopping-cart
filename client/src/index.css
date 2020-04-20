@@ -1,8 +1,22 @@
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
+  margin: 0px;
 }
 
-ol, ul {
-  padding-left: 30px;
+.header {
+    height: 75px;
+    background-color: #F00;
+    text-align: right;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+a {
+    cursor: pointer;
+}
+
+.header > * {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }

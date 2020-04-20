@@ -24,7 +24,6 @@ class Store extends React.Component {
     }
 
     addToCart(item) {
-        console.log('adding: ', item);
         const items = this.state.cart.items.concat(item);
         const cart = this.state.cart;
 
@@ -34,12 +33,14 @@ class Store extends React.Component {
 
     render() {
         const itemsList = this.state.availableItems.map((item) =>
-            <Item key={item.id} id={item.id} obj={item} onClick={() => this.addToCart({item})} />
+            <a onClick={() => this.addToCart({item})}><Item key={item.id} id={item.id} obj={item} /></a>
         )
         return (
             <div className="store">
-                <div className="shopping-cart">
-                    <ShoppingCart cart={this.state.cart} />
+                <div className="header">
+                    <div className="shopping-cart">
+                        <ShoppingCart cart={this.state.cart} />
+                    </div>
                 </div>
                 <div className="items">
                     {itemsList}

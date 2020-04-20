@@ -17,7 +17,7 @@ export class ShoppingCart extends React.Component {
             body: JSON.stringify({ title: 'React POST Request Example' })
         };
         // TODO: expand the id to be dynamic if more carts. Right now, hardcode.
-        fetch('http://api:8000/cart/', requestOptions)
+        fetch('http://api:8000/cart/' + this.props.cart.id, requestOptions)
             .then(response => response.json())
             .then(data => this.setState({ postId: data.id }));
     }
